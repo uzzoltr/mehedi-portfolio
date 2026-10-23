@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - মেহেদী প্রজেক্ট</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: #1f2937;
+            background: #f8fafc;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem max(1.25rem, calc((100% - 1100px) / 2));
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+        }
+
+        header a {
+            color: #0f766e;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem;
+        }
+
+        .hero {
+            padding: clamp(2rem, 7vw, 5rem);
+            border-radius: 20px;
+            color: #fff;
+            background: linear-gradient(135deg, #0f766e, #14b8a6);
+        }
+
+        .hero h1 {
+            max-width: 650px;
+            margin: 0 0 1rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            max-width: 580px;
+            margin: 0 0 1.5rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.7rem 1.1rem;
+            border-radius: 8px;
+            color: #0f766e;
+            background: #fff;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .products {
+            padding: 3rem 0 1rem;
+        }
+
+        .products h2 {
+            margin: 0 0 1.25rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+            gap: 1rem;
+        }
+
+        .product-card {
+            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .product-card h3 {
+            margin: 0 0 0.5rem;
+        }
+
+        .product-card p {
+            margin: 0;
+            color: #64748b;
+        }
+
+        footer {
+            padding: 1.5rem 1.25rem;
+            color: #64748b;
+            text-align: center;
+        }
+
+        @media (max-width: 520px) {
+            header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <strong>মেহেদী শপ</strong>
+        <a href="../index.html">পোর্টফোলিওতে ফিরে যান</a>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">সহজে খুঁজে নিন আপনার পছন্দের পণ্য</h1>
+            <p>এটি একটি ই-কমার্স ল্যান্ডিং পেজের প্রাথমিক নমুনা। পণ্যের তালিকা ও তথ্য আপনার প্রয়োজন অনুযায়ী যোগ করুন।</p>
+            <a class="button" href="#products">পণ্য দেখুন</a>
+        </section>
+
+        <section class="products" id="products" aria-labelledby="products-title">
+            <h2 id="products-title">নমুনা পণ্য</h2>
+            <div class="product-grid">
+                <article class="product-card">
+                    <h3>পণ্য এক</h3>
+                    <p>এখানে পণ্যের সংক্ষিপ্ত বিবরণ যোগ করুন।</p>
+                </article>
+                <article class="product-card">
+                    <h3>পণ্য দুই</h3>
+                    <p>এখানে পণ্যের সংক্ষিপ্ত বিবরণ যোগ করুন।</p>
+                </article>
+                <article class="product-card">
+                    <h3>পণ্য তিন</h3>
+                    <p>এখানে পণ্যের সংক্ষিপ্ত বিবরণ যোগ করুন।</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 মেহেদী শপ</p>
+    </footer>
+</body>
+</html>
