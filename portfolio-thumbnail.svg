@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">মেহেদীর প্রজেক্ট পোর্টফোলিও</title>
+  <desc id="description">নিজের হাতে তৈরি ওয়েব প্রজেক্টের পোর্টফোলিও প্রচ্ছদ</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111c32"/>
+      <stop offset="0.62" stop-color="#1b3150"/>
+      <stop offset="1" stop-color="#173f4b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#57c4a9"/>
+      <stop offset="1" stop-color="#0f8b78"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eaf6f2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#071426" flood-opacity=".28"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="1045" cy="85" r="210" fill="#57c4a9" opacity=".11"/>
+  <circle cx="1080" cy="570" r="270" fill="#57c4a9" opacity=".08"/>
+  <path d="M0 530c180-95 310-70 455 4s305 71 465-7 230-75 280-54v157H0z" fill="#0b172a" opacity=".28"/>
+
+  <g font-family="Segoe UI, Noto Sans Bengali, sans-serif">
+    <rect x="76" y="86" width="58" height="5" rx="3" fill="url(#accent)"/>
+    <text x="76" y="142" fill="#9ce6d4" font-size="22" font-weight="700" letter-spacing="3">MEHEDI'S PORTFOLIO</text>
+    <text x="72" y="246" fill="#ffffff" font-size="58" font-weight="800">আমার প্রজেক্ট</text>
+    <text x="72" y="318" fill="#ffffff" font-size="58" font-weight="800">পোর্টফোলিও</text>
+    <text x="76" y="376" fill="#d4deeb" font-size="24">নিজের হাতে তৈরি ওয়েব প্রজেক্টের সংগ্রহ</text>
+
+    <g fill="#dff7f0" font-size="18" font-weight="600">
+      <rect x="76" y="423" width="112" height="42" rx="21" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".18"/>
+      <text x="132" y="450" text-anchor="middle">HTML</text>
+      <rect x="202" y="423" width="104" height="42" rx="21" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".18"/>
+      <text x="254" y="450" text-anchor="middle">CSS</text>
+      <rect x="320" y="423" width="154" height="42" rx="21" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".18"/>
+      <text x="397" y="450" text-anchor="middle">JavaScript</text>
+    </g>
+
+    <g filter="url(#shadow)" transform="rotate(-4 825 320)">
+      <rect x="594" y="120" width="510" height="350" rx="22" fill="url(#panel)"/>
+      <rect x="594" y="120" width="510" height="55" rx="22" fill="#ffffff"/>
+      <path d="M594 153v22h510v-22" fill="#ffffff"/>
+      <circle cx="625" cy="148" r="6" fill="#f1a79c"/>
+      <circle cx="647" cy="148" r="6" fill="#f1cf83"/>
+      <circle cx="669" cy="148" r="6" fill="#83cfb5"/>
+      <rect x="714" y="140" width="240" height="16" rx="8" fill="#edf1f5"/>
+
+      <rect x="622" y="198" width="210" height="244" rx="14" fill="#ffffff"/>
+      <rect x="850" y="198" width="226" height="112" rx="14" fill="#e4f3ee"/>
+      <rect x="850" y="326" width="226" height="116" rx="14" fill="#f8ede4"/>
+      <rect x="642" y="220" width="75" height="10" rx="5" fill="#0f8b78" opacity=".75"/>
+      <rect x="642" y="245" width="145" height="15" rx="7" fill="#20324b"/>
+      <rect x="642" y="267" width="118" height="15" rx="7" fill="#20324b"/>
+      <rect x="642" y="302" width="148" height="7" rx="3" fill="#dce5e9"/>
+      <rect x="642" y="318" width="128" height="7" rx="3" fill="#dce5e9"/>
+      <rect x="642" y="355" width="100" height="35" rx="9" fill="url(#accent)"/>
+      <circle cx="963" cy="254" r="34" fill="#ffffff"/>
+      <path d="M947 260h32l-4-20h-24z" fill="#f0b46f"/>
+      <path d="M945 240h36l-5-8h-26z" fill="#0f8b78"/>
+      <circle cx="963" cy="382" r="35" fill="#ffffff"/>
+      <circle cx="963" cy="382" r="25" fill="#f5d48d"/>
+      <circle cx="963" cy="382" r="15" fill="#df7740"/>
+      <circle cx="954" cy="374" r="4" fill="#57835d"/>
+      <circle cx="972" cy="388" r="4" fill="#57835d"/>
+    </g>
+
+    <rect x="914" y="487" width="174" height="52" rx="26" fill="url(#accent)"/>
+    <text x="1001" y="521" fill="#ffffff" font-size="20" font-weight="700" text-anchor="middle">৪টি প্রজেক্ট</text>
+  </g>
+</svg>
