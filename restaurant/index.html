@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="রসুই রেস্টুরেন্টের নমুনা ওয়েবসাইট—পরিচিতি ও খাবারের মেনু দেখুন।">
+    <title>রসুই | রেস্টুরেন্ট ওয়েবসাইটের নমুনা</title>
+    <style>
+        :root {
+            --ink: #2b211d;
+            --muted: #78675d;
+            --brand: #a73e25;
+            --brand-dark: #7e2d1d;
+            --cream: #fffaf2;
+            --surface: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--cream);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .sample-note {
+            padding: 0.55rem 1rem;
+            background: #2b211d;
+            color: #fff1dc;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 1rem 1.25rem;
+        }
+
+        .brand {
+            color: var(--brand);
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+
+        .site-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            align-items: center;
+        }
+
+        .site-nav a {
+            color: #59483e;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .site-nav a:hover,
+        .site-nav a:focus-visible {
+            color: var(--brand);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .site-nav .portfolio-link {
+            color: var(--brand);
+        }
+
+        .hero-wrap {
+            padding: 2.5rem 1.25rem 3.5rem;
+        }
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            display: grid;
+            min-height: 430px;
+            align-items: center;
+            max-width: 1160px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: clamp(2rem, 7vw, 5rem);
+            border-radius: 26px;
+            background:
+                radial-gradient(ellipse at 82% 35%, rgba(255, 189, 92, 0.35), transparent 18rem),
+                radial-gradient(ellipse at 90% 90%, rgba(167, 62, 37, 0.5), transparent 28rem),
+                linear-gradient(120deg, #38231b, #71351f 58%, #9a4c24);
+            color: #fffaf2;
+        }
+
+        .hero::after {
+            position: absolute;
+            z-index: -1;
+            top: 50%;
+            right: 9%;
+            width: clamp(190px, 30vw, 330px);
+            aspect-ratio: 1;
+            border: 1px solid rgba(255, 237, 209, 0.35);
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 50% 45%, #f7d38b 0 8%, transparent 9%),
+                radial-gradient(ellipse at 42% 42%, #779b4b 0 7%, transparent 8%),
+                radial-gradient(ellipse at 60% 58%, #b74c30 0 9%, transparent 10%),
+                radial-gradient(circle, #f4e4c7 0 48%, #d6b684 49% 53%, #f7ead5 54% 60%, transparent 61%);
+            box-shadow: 0 24px 70px rgba(23, 12, 7, 0.25);
+            content: "";
+            transform: translateY(-50%) rotate(-12deg);
+        }
+
+        .hero-content {
+            max-width: 590px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            color: #ffd69b;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .hero h1 {
+            margin: 0 0 1rem;
+            font-size: clamp(2.4rem, 6vw, 4.6rem);
+            letter-spacing: -0.04em;
+            line-height: 1.12;
+        }
+
+        .hero p {
+            max-width: 510px;
+            margin: 0 0 1.6rem;
+            color: #f5e5d5;
+            font-size: clamp(1rem, 2vw, 1.15rem);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ffe3ba;
+            border-radius: 9px;
+            background: #fff4e4;
+            color: #71351f;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        .button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid #e4a55d;
+            outline-offset: 3px;
+        }
+
+        main {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 1.25rem 4rem;
+        }
+
+        .section {
+            padding: 2rem 0;
+        }
+
+        .section-heading {
+            margin-bottom: 1.6rem;
+            text-align: center;
+        }
+
+        .section-heading span {
+            color: var(--brand);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin: 0.35rem 0 0;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            letter-spacing: -0.03em;
+        }
+
+        .about {
+            max-width: 760px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr));
+            gap: 1rem;
+        }
+
+        .menu-card {
+            padding: 1.4rem;
+            border: 1px solid #f0e5d6;
+            border-radius: 14px;
+            background: var(--surface);
+            box-shadow: 0 8px 24px rgba(67, 43, 25, 0.05);
+        }
+
+        .menu-card h3 {
+            margin: 0 0 0.45rem;
+            color: #392820;
+            font-size: 1.15rem;
+        }
+
+        .menu-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .menu-tag {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: #fff1df;
+            color: var(--brand-dark);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .contact {
+            margin-top: 2rem;
+            padding: clamp(1.5rem, 5vw, 2.5rem);
+            border-radius: 18px;
+            background: #f2e5d4;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin: 0 0 0.5rem;
+        }
+
+        .contact p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #6b594d;
+        }
+
+        footer {
+            padding: 1.5rem 1rem;
+            background: #2b211d;
+            color: #f5e5d5;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0.3rem 0;
+        }
+
+        footer a {
+            color: #ffd69b;
+            text-underline-offset: 3px;
+        }
+
+        @media (max-width: 700px) {
+            .site-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .site-nav {
+                gap: 0.65rem 1rem;
+            }
+
+            .hero-wrap {
+                padding-top: 1rem;
+            }
+
+            .hero {
+                min-height: 470px;
+                align-items: start;
+                padding-bottom: 220px;
+            }
+
+            .hero::after {
+                top: auto;
+                right: 50%;
+                bottom: -115px;
+                width: 230px;
+                transform: translateX(50%) rotate(-12deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sample-note">পোর্টফোলিওর জন্য তৈরি নমুনা ওয়েবসাইট — রসুই একটি কাল্পনিক রেস্টুরেন্ট</div>
+
+    <header class="site-header">
+        <a class="brand" href="#home" aria-label="রসুই হোম">রসুই</a>
+        <nav class="site-nav" aria-label="প্রধান নেভিগেশন">
+            <a href="#about">আমাদের গল্প</a>
+            <a href="#menu">নমুনা মেনু</a>
+            <a href="#contact">যোগাযোগ</a>
+            <a class="portfolio-link" href="../index.html">পোর্টফোলিও</a>
+        </nav>
+    </header>
+
+    <div class="hero-wrap" id="home">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <span class="eyebrow">ঘরের স্বাদ, যত্নের ছোঁয়া</span>
+                <h1 id="hero-title">প্রতিটি খাবারে থাকুক আপনজনের গল্প</h1>
+                <p>বাংলার পরিচিত স্বাদ আর যত্নে রান্না করা খাবারের এক উষ্ণ নমুনা পরিচিতি। আপনার রেস্টুরেন্টের নিজস্ব গল্প ও খাবার দিয়ে এই ডিজাইন সাজানো যাবে।</p>
+                <a class="button" href="#menu">নমুনা মেনু দেখুন</a>
+            </div>
+        </section>
+    </div>
+
+    <main>
+        <section class="section" id="about" aria-labelledby="about-title">
+            <div class="section-heading">
+                <span>আমাদের গল্প</span>
+                <h2 id="about-title">স্বাদের সঙ্গে যত্নও পরিবেশন করি</h2>
+            </div>
+            <p class="about">রসুই একটি কাল্পনিক রেস্টুরেন্টের নমুনা পরিচিতি। এখানে মালিকের গল্প, রান্নার বিশেষত্ব, উপকরণের উৎস এবং অতিথিদের জন্য রেস্টুরেন্টের প্রতিশ্রুতি তুলে ধরার জায়গা রাখা হয়েছে।</p>
+        </section>
+
+        <section class="section" id="menu" aria-labelledby="menu-title">
+            <div class="section-heading">
+                <span>নমুনা মেনু</span>
+                <h2 id="menu-title">জনপ্রিয় কিছু পদ</h2>
+            </div>
+            <div class="menu-grid">
+                <article class="menu-card">
+                    <h3>কাচ্চি বিরিয়ানি</h3>
+                    <p>সুগন্ধি চাল, মসলা আর ধীরে রান্না করা মাংসের পরিচিত আয়োজন।</p>
+                    <span class="menu-tag">জনপ্রিয় পদ</span>
+                </article>
+                <article class="menu-card">
+                    <h3>মুরগির ঝোল</h3>
+                    <p>ঘরোয়া মসলায় রান্না করা নরম মুরগির ঝোল, ভাতের সঙ্গে মানানসই।</p>
+                    <span class="menu-tag">ঘরোয়া স্বাদ</span>
+                </article>
+                <article class="menu-card">
+                    <h3>মিষ্টি দই</h3>
+                    <p>খাবারের শেষে পরিবেশনের জন্য মিষ্টি ও ঠান্ডা একটি ডেজার্টের নমুনা।</p>
+                    <span class="menu-tag">ডেজার্ট</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact" id="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title">আপনার রেস্টুরেন্টের জন্য এমন সাইট চান?</h2>
+            <p>এটি একটি ডেমো ডিজাইন। এখানে আসল রেস্টুরেন্টের ঠিকানা, সময়সূচি, ফোন নম্বর ও মেনু মালিকের দেওয়া তথ্য অনুযায়ী বসাতে হবে।</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>রসুই — রেস্টুরেন্ট ওয়েবসাইটের নমুনা</p>
+        <p><a href="../index.html">মেহেদীর পোর্টফোলিওতে ফিরে যান</a></p>
+    </footer>
+</body>
+</html>
