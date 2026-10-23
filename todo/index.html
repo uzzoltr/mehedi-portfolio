@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: clamp(2rem, 7vh, 4.5rem) 1rem;
+            color: #17243b;
+            background:
+                radial-gradient(ellipse at 12% 8%, rgba(45, 212, 191, 0.19), transparent 28rem),
+                radial-gradient(ellipse at 92% 88%, rgba(99, 102, 241, 0.14), transparent 30rem),
+                linear-gradient(145deg, #eef4f8, #f7f8fc 55%, #edf4f4);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        main {
+            width: min(100%, 700px);
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 0 0 1rem 0.25rem;
+            color: #087565;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #064e45;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .todo-panel {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(1.5rem, 6vw, 2.75rem);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 24px 70px rgba(24, 44, 70, 0.13), 0 3px 10px rgba(24, 44, 70, 0.04);
+            backdrop-filter: blur(10px);
+        }
+
+        .todo-panel::before {
+            position: absolute;
+            inset: 0 0 auto;
+            height: 6px;
+            background: linear-gradient(90deg, #0f8b78, #36b99f 55%, #818cf8);
+            content: "";
+        }
+
+        h1 {
+            margin: 0 0 0.55rem;
+            color: #182942;
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            letter-spacing: -0.035em;
+            line-height: 1.2;
+        }
+
+        .intro,
+        #task-count {
+            color: #63738b;
+        }
+
+        .intro {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        form {
+            display: flex;
+            gap: 0.75rem;
+            margin: 1rem 0 0.6rem;
+        }
+
+        input {
+            flex: 1;
+            min-width: 0;
+            padding: 0.85rem 1rem;
+            border: 1px solid #d5dee8;
+            border-radius: 10px;
+            background: #fbfdff;
+            color: #17243b;
+            font: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        input:focus {
+            border-color: #28a892;
+            outline: none;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(15, 139, 120, 0.13);
+        }
+
+        button {
+            padding: 0.7rem 1rem;
+            border: 0;
+            border-radius: 9px;
+            color: #fff;
+            background: linear-gradient(135deg, #0f8b78, #087565);
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+
+        button:hover {
+            box-shadow: 0 5px 14px rgba(15, 139, 120, 0.2);
+            transform: translateY(-1px);
+        }
+
+        button:focus-visible,
+        .back-link:focus-visible {
+            outline: 3px solid rgba(15, 139, 120, 0.35);
+            outline-offset: 3px;
+        }
+
+        #storage-message {
+            min-height: 1.5rem;
+            color: #a65308;
+            font-size: 0.9rem;
+        }
+
+        #task-count {
+            margin: 1.25rem 0 0.75rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        #task-list {
+            display: grid;
+            gap: 0.7rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem;
+            border: 1px solid #e5ebf1;
+            border-radius: 11px;
+            background: linear-gradient(120deg, #fff, #fbfdff);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .task-item:hover {
+            border-color: #c5ddd8;
+            box-shadow: 0 5px 16px rgba(24, 44, 70, 0.06);
+        }
+
+        .task-item input {
+            flex: none;
+            width: 1.2rem;
+            height: 1.2rem;
+            margin: 0;
+            accent-color: #0f8b78;
+            cursor: pointer;
+        }
+
+        .task-text {
+            flex: 1;
+            overflow-wrap: anywhere;
+            color: #263750;
+        }
+
+        .task-item.completed .task-text {
+            color: #8190a4;
+            text-decoration: line-through;
+        }
+
+        .delete-button {
+            padding: 0.4rem 0.65rem;
+            background: #fff1f0;
+            color: #b42318;
+        }
+
+        .delete-button:hover {
+            background: #fee4e2;
+            box-shadow: none;
+        }
+
+        .edit-button {
+            padding: 0.4rem 0.65rem;
+            background: #e8f6f2;
+            color: #087565;
+        }
+
+        .edit-button:hover {
+            background: #d4eee7;
+            box-shadow: none;
+        }
+
+        #empty-state {
+            margin: 1.5rem 0 0.5rem;
+            padding: 1.25rem;
+            border: 1px dashed #cbd8e2;
+            border-radius: 12px;
+            background: #f8fbfc;
+            color: #718096;
+            text-align: center;
+        }
+
+        @media (max-width: 420px) {
+            form {
+                flex-direction: column;
+            }
+
+            .task-item {
+                flex-wrap: wrap;
+            }
+
+            .task-text {
+                min-width: calc(100% - 2rem);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <a class="back-link" href="../index.html">← পোর্টফোলিওতে ফিরে যান</a>
+        <section class="todo-panel" aria-labelledby="page-title">
+            <h1 id="page-title">Management</h1>
+            <p class="intro">কাজ যোগ করুন, শেষ হলে চিহ্নিত করুন, অথবা মুছে ফেলুন।</p>
+
+            <form id="task-form">
+                <input id="task-input" type="text" placeholder="নতুন কাজ লিখুন" aria-label="নতুন কাজ" required>
+                <button type="submit">কাজ যোগ করুন</button>
+            </form>
+
+            <p id="storage-message" role="status"></p>
+            <p id="task-count" aria-live="polite"></p>
+            <p id="empty-state">এখনো কোনো কাজ যোগ করা হয়নি।</p>
+            <ul id="task-list" aria-label="কাজের তালিকা"></ul>
+        </section>
+    </main>
+
+    <script>
+        const storageKey = "mehedi-todo-tasks";
+        const form = document.querySelector("#task-form");
+        const input = document.querySelector("#task-input");
+        const taskList = document.querySelector("#task-list");
+        const taskCount = document.querySelector("#task-count");
+        const emptyState = document.querySelector("#empty-state");
+        const storageMessage = document.querySelector("#storage-message");
+        let tasks = [];
+
+        try {
+            const savedTasks = localStorage.getItem(storageKey);
+            if (savedTasks) {
+                const parsedTasks = JSON.parse(savedTasks);
+                if (Array.isArray(parsedTasks) && parsedTasks.every(task =>
+                    task &&
+                    typeof task.id === "string" &&
+                    typeof task.text === "string" &&
+                    typeof task.completed === "boolean"
+                )) {
+                    tasks = parsedTasks;
+                } else {
+                    storageMessage.textContent = "সংরক্ষিত কাজের তথ্য সঠিক নয়; নতুন তালিকা শুরু হয়েছে।";
+                }
+            }
+        } catch (error) {
+            storageMessage.textContent = "সংরক্ষিত কাজ পড়া যায়নি; এই সেশনে তালিকা ব্যবহার করতে পারবেন।";
+        }
+
+        function saveTasks() {
+            try {
+                localStorage.setItem(storageKey, JSON.stringify(tasks));
+                storageMessage.textContent = "";
+            } catch (error) {
+                storageMessage.textContent = "কাজ সংরক্ষণ করা যায়নি; পেজ বন্ধ করলে তালিকা হারিয়ে যেতে পারে।";
+            }
+        }
+
+        function renderTasks() {
+            taskList.replaceChildren();
+            emptyState.hidden = tasks.length > 0;
+            taskCount.textContent = `মোট কাজ: ${tasks.length}টি · সম্পন্ন: ${tasks.filter(task => task.completed).length}টি`;
+
+            for (const task of tasks) {
+                const item = document.createElement("li");
+                item.className = task.completed ? "task-item completed" : "task-item";
+
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = task.completed;
+                checkbox.setAttribute("aria-label", `${task.text} সম্পন্ন`);
+                checkbox.addEventListener("change", () => {
+                    task.completed = checkbox.checked;
+                    saveTasks();
+                    renderTasks();
+                });
+
+                const text = document.createElement("span");
+                text.className = "task-text";
+                text.textContent = task.text;
+
+                const editButton = document.createElement("button");
+                editButton.type = "button";
+                editButton.className = "edit-button";
+                editButton.textContent = "পরিবর্তন";
+                editButton.setAttribute("aria-label", `${task.text} পরিবর্তন`);
+                editButton.addEventListener("click", () => {
+                    const updatedText = window.prompt("কাজের নতুন নাম লিখুন:", task.text);
+                    if (updatedText === null) {
+                        return;
+                    }
+
+                    const trimmedText = updatedText.trim();
+                    if (!trimmedText) {
+                        storageMessage.textContent = "কাজের নাম খালি রাখা যাবে না।";
+                        return;
+                    }
+
+                    task.text = trimmedText;
+                    saveTasks();
+                    renderTasks();
+                });
+
+                const deleteButton = document.createElement("button");
+                deleteButton.type = "button";
+                deleteButton.className = "delete-button";
+                deleteButton.textContent = "মুছুন";
+                deleteButton.setAttribute("aria-label", `${task.text} মুছুন`);
+                deleteButton.addEventListener("click", () => {
+                    tasks = tasks.filter(currentTask => currentTask.id !== task.id);
+                    saveTasks();
+                    renderTasks();
+                });
+
+                item.append(checkbox, text, editButton, deleteButton);
+                taskList.append(item);
+            }
+        }
+
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+            const text = input.value.trim();
+            if (!text) {
+                input.focus();
+                return;
+            }
+
+            tasks.push({
+                id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+                text,
+                completed: false
+            });
+            saveTasks();
+            renderTasks();
+            form.reset();
+            input.focus();
+        });
+
+        renderTasks();
+    </script>
+</body>
+</html>
